@@ -1,57 +1,45 @@
 
 
-/*Asi es como declaro una variable let variable*/
-let edad
-edad =0
-/*Declaro una constante, tiene que estar inicializada en la misma linea*/
+alert("Bienvenido a la vinoteca de Cleopatra");
 
-const apellido = "zarkovich"
-  console.log(typeof apellido
-  )
+let respuesta;
+respuesta = prompt("Que andas buscando?\n Selecciona del siguiente catalogo indicando el numero de lo que queres encargar\n 1.Vino\n 2.Vodka\n 3:Cerveza\n 4:Licores");
+respuesta = parseInt(respuesta);
 
-let preguntar = prompt("tu nombre papa")
-
-
-console.log(preguntar)
-
-let edad_pregunta = prompt("cual es tu edad pendejo")
-edad = parseInt(edad_pregunta)
-
-alert("cagaste")
-
-
-
-if (edad>20) {
-  console.log("jaja viejo de mierda")	
-}else{
-	console.log("a pero mira que pendejo")
-
-}
-
-
-for (let i = 0; i <  5; i++) {
-
-	console.log(i
-	)
-}
-
-while (edad < 30) {
-
-  edad++
-  console.log(edad)
-
-
-}
-
-
-
-function devuelve_edad_ala_mitad(edad){
+if (respuesta == 1  ) {
+	let vinoElegido = prompt("Nuestros vinos son\n 1)Balbo: 500$\n 2)Chacabuco: 300$");
+  	let cantidadElegida = prompt("Ahora selecciona la cantidad, recorda que para encargos mayores a 12tenes que llamarnos al 0112435412");
+  	vinoElegido = parseInt(vinoElegido);
+  	cantidadElegida = parseInt(cantidadElegida);
+  	let totalPago =0;
 	
-	edad = edad / 2 
-	return edad
-}
+	while (vinoElegido != 1 && 2 ) {
+		
+		vinoElegido = prompt("Nuestros vinos son\n 1)Balbo: 500$\n 2)Chacabuco: 300$");
+		  
+  		vinoElegido = parseInt(vinoElegido);
+	}
 
-edad = devuelve_edad_ala_mitad(edad)
+	while (cantidadElegida > 12  && cantidadElegida < 1 )  {
+		cantidadElegida = prompt("Ahora selecciona la cantidad, recorda que para encargos mayores a 12tenes que llamarnos al 0112435412");
+	  cantidadElegida = parseInt(cantidadElegida);
 
-console.log(edad)
+  	
+	}
+
+  	if (vinoElegido == 1 ) {
+  		for (let i= 1; i <= cantidadElegida; i++) {
+			totalPago = 500*i;
+	
+  	}}
+	if (vinoElegido == 2 ) {
+  		for (let i= 1; i <= cantidadElegida; i++) {
+			totalPago = 300*i;
+	
+  	}
+		 		
+	}
+	alert(totalPago);
+  	}
+
 
