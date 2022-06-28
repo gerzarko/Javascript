@@ -46,7 +46,11 @@ if (respuesta == 1  ) {
 
 	}
 		 		
-  	
 	
-}
+}  	
 
+else{
+
+	prompt("No se pudo seleccionar")
+
+}
