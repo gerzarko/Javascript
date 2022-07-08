@@ -131,8 +131,8 @@
 
   
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 8vw;
-    padding-left: 8vw;
+    padding-right: 7vw;
+    padding-left: 7vw;
 }
 
 .dropdown-menu{
@@ -148,3 +148,49 @@
 #cards{
     display: inline;
 }
+
+
+
+
+/* ANimacion*/
+
+#filters{
+    height: 0vw;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+#container {
+    position: absolute;
+    margin: auto;
+    width: 100vw;
+    height: 20vw;
+    top: 32vw;
+    left: 50vw;
+
+    filter: url(#threshold) blur(0.6px);
+}
+
+#text1,
+#text2 {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+
+
+    
+    font-size: 10vw;
+
+    text-align: center;
+
+    user-select: none;
+}
+
+
+
+
+/* ANimacion Card*/
+
