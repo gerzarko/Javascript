@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 const malbec = "Rutini Malbec";
 const sauvingnon = "Sauvingnon Blanc";
 const ipa = "ipa";
@@ -117,13 +125,19 @@ cervezas.push(patagoniaRoja);
 function agregarAlCarritoUnGranMedalla(){
 
     carrito.push();
-    console.log("se cargo") 
+    
 }
 
 function agregarAlCarrito(bebida) {
     carrito.push(bebida);
-    alert("Agregaste un Producto");
-}
+    Swal.fire({
+      title: 'Felicitaciones',
+      text: 'Agregaste un producto',
+      icon: 'success',
+      confirmButtonText: 'Seguir'
+
+    })
+  }
 
 function agregarCard(bebida) {
     let nombre = bebida.nombre;
@@ -153,11 +167,10 @@ function agregarCard(bebida) {
     
     document.querySelector('#cartas').appendChild(nuevaCard); 
     let botonBebida = document.getElementById(`boton${bebida.nombre}`);
-    botonBebida.onclick = () =>{console.log("agregaste un producto")};
+    botonBebida.onclick = () =>{agregarAlCarrito(bebida)}
 
 
-}
-
+    }
 
 
 
