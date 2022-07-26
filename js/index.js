@@ -1,8 +1,4 @@
-
-
-
-
-
+ 
 
 
 
@@ -17,12 +13,16 @@ const esimportado = "Es importado"
 
 
 
+let indexCarrito = 0;
+
+
 
 //Clases y Objetos//
 class bebida {
 
-    constructor(nombre, litros, precio,stock,descripcion,cantidad){
+    constructor(id,nombre, litros, precio,stock,descripcion,cantidad,){
 
+        this.id = id;
         this.nombre = nombre;
         this.litros = litros;
         this.precio = precio;
@@ -57,9 +57,9 @@ class bebida {
 class vino extends bebida {
 
 
-    constructor(tipo,importado,anio,bodega,nombre,litros,precio,stock,descripcion,cantidad){
-		super(nombre,litros,precio,stock,descripcion,cantidad);
-		this.tipo = tipo;
+    constructor(id,tipo,importado,anio,bodega,nombre,litros,precio,stock,descripcion,cantidad){
+		super(id,nombre,litros,precio,stock,descripcion,cantidad);
+		    this.tipo = tipo;
         this.importado = importado;
         this.anio = anio;
         this.bodega = bodega;
@@ -80,42 +80,15 @@ class vino extends bebida {
 class cerveza extends bebida{
 
 
-	constructor(tipo,importado,nombre,litros,precio,stock,descripcion,cantidad){
+	constructor(id,tipo,importado,nombre,litros,precio,stock,descripcion,cantidad){
 		
-		super(nombre,litros,precio,stock,descripcion,cantidad);
+		super(id,nombre,litros,precio,stock,descripcion,cantidad);
 		this.tipo = tipo;
 		this.importado = importado;	
 
 	}
 
 }
-
-
-// Inicializacion de Objetos
-
-let rutini = new vino(malbec,false,2020,"Rutini","Rutini Malbec Reserva", 1.25, 500,150,"Rojo rubí profundo. El dúo de cepas de origen francés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno, y la Malbec matiza el corte con taninos suaves y dulces, realzando una combinación única de aromas y sabores frutados.");
-let granMedalla = new vino(malbec,false,2020,"Trapiche","Gran Medalla Trapiche",0.75,1000,120,"Rojo rubí profundo. El dúo de cepas de origen francés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno, y la Malbec matiza el corte con taninos suaves y dulces, realzando una combinación única de aromas y sabores frutados.");
-let vinaDeBalbo = new vino(malbec,false,2022,"Los Haroldos","Vinas de Balbo",1.5,500,1000);
-let rutiniPinot = new vino(pinot,false,2020,"Rutini","Pinot Noir Rutini",0.95,500,200,"Púrpura de media intensidad, con matices rojos. Aromas sutiles a frutas rojas frescas (cereza, frutilla, arándanos) unidos a otros más complejos que evocan el bosque, ahumados, cuero y tabaco. En el paladar, deja una sensación aterciopelada, en la que perdura el recuerdo de frutas secas (avellana).");
-let patagoniaRoja = new cerveza(ipa,false,"Patagonia Ipa 1/2lt.",0.5,300,400,);
-let luigiBosca = new vino(malbec,false,2020,"Luigi Bosca","Luigi Bosca Reserva Malbec",0.75,1000,300,"Es un tinto de color rojo violáceo brillante. Sus aromas son intensos y amables, con notas que recuerdan a frutas rojas, y tonos algo florales y especiados. En boca es generoso, fluido y expresivo, con taninos incipientes. De paladar franco y paso refrescante, con buen cuerpo y carácter.");
-
-
-
-
-
-
-
-let vinos = [];
-let cervezas = [];
-let carrito = [];
-let bebidasSinAlcohol = [];
-
-
-vinos.push(rutini,luigiBosca);
-vinos.push(vinaDeBalbo);
-cervezas.push(patagoniaRoja);
-
 
 
 
@@ -129,7 +102,19 @@ function agregarAlCarritoUnGranMedalla(){
 }
 
 function agregarAlCarrito(bebida) {
+      
     carrito.push(bebida);
+
+    const bebidaStorage =   JSON.stringify(carrito[indexCarrito]);
+
+
+
+
+    localStorage.setItem(bebida.id,bebidaStorage);
+    
+
+
+    indexCarrito++;
     Swal.fire({
       title: 'Felicitaciones',
       text: 'Agregaste un producto',
@@ -137,6 +122,7 @@ function agregarAlCarrito(bebida) {
       confirmButtonText: 'Seguir'
 
     })
+    
   }
 
 function agregarCard(bebida) {
@@ -170,7 +156,48 @@ function agregarCard(bebida) {
     botonBebida.onclick = () =>{agregarAlCarrito(bebida)}
 
 
+
     }
+
+
+  const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+
+
+
+
+
+
+// Inicializacion
+
+
+let rutini = new vino(001,malbec,false,2020,"Rutini","Rutini Malbec Reserva", 1.25, 500,150,"Rojo rubí profundo. El dúo de cepas de origen francés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno, y la Malbec matiza el corte con taninos suaves y dulces, realzando una combinación única de aromas y sabores frutados.");
+let granMedalla = new vino(002,malbec,false,2020,"Trapiche","Gran Medalla Trapiche",0.75,1000,120,"Rojo rubí profundo. El dúo de cepas de origen francés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno, y la Malbec matiza el corte con taninos suaves y dulces, realzando una combinación única de aromas y sabores frutados.");
+let vinaDeBalbo = new vino(003,malbec,false,2022,"Los Haroldos","Vinas de Balbo",1.5,500,1000);
+let rutiniPinot = new vino(004,pinot,false,2020,"Rutini","Pinot Noir Rutini",0.95,500,200,"Púrpura de media intensidad, con matices rojos. Aromas sutiles a frutas rojas frescas (cereza, frutilla, arándanos) unidos a otros más complejos que evocan el bosque, ahumados, cuero y tabaco. En el paladar, deja una sensación aterciopelada, en la que perdura el recuerdo de frutas secas (avellana).");
+let patagoniaRoja = new cerveza(101,ipa,false,"Patagonia Ipa 1/2lt.",0.5,300,400,);
+let luigiBosca = new vino(005,malbec,false,2020,"Luigi Bosca","Luigi Bosca Reserva Malbec",0.75,1000,300,"Es un tinto de color rojo violáceo brillante. Sus aromas son intensos y amables, con notas que recuerdan a frutas rojas, y tonos algo florales y especiados. En boca es generoso, fluido y expresivo, con taninos incipientes. De paladar franco y paso refrescante, con buen cuerpo y carácter.");
+
+
+
+
+
+
+
+let vinos = [];
+let cervezas = [];
+let carrito = [];
+let bebidasSinAlcohol = [];
+
+
+vinos.push(rutini,luigiBosca);
+vinos.push(vinaDeBalbo);
+cervezas.push(patagoniaRoja);
+
+
+
+
+
+
 
 
 
@@ -190,20 +217,65 @@ agregarCard(rutini);
 agregarCard(rutiniPinot);
 agregarCard(luigiBosca);
 
+for (let i = 0; i < vinos.length; i++) {
+  agregarAlJason(vinos[i]);
+  
+}
+
+
+
+function agregarAlJason(bebida) {
+  fetch('https://jsonplaceholder.typicode.com/posts',
+ {
+        method: 'POST',
+        body: JSON.stringify({
+            title: `${bebida.devolverNombre()}`,
+            body: bebida,
+            userId: bebida.id,
+
+           
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then((response) => response.json())
+    .then((data) => console.log(data))
+  
+}
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then( (resp) => resp.json() )
+    .then( (data) => {
+        if (data === vinos[0].id) {
+          console.log
+        }
+    })
 
 
 
 
 
 
-const ljson = JSON.stringify(rutini);
-console.log(ljson);
 
-localStorage.setItem('rutini',ljson);
 
-let bajada = localStorage.getItem('rutini');
-bajada =  JSON.parse(ljson);
-console.log(bajada);
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -290,3 +362,5 @@ function animate() {
 }
 
 animate();
+
+
