@@ -1,4 +1,7 @@
- 
+
+
+
+
 
 
 
@@ -14,7 +17,7 @@ const esimportado = "Es importado"
 
 
 let indexCarrito = 0;
-
+let productosCargados = 3;
 
 
 //Clases y Objetos//
@@ -95,11 +98,7 @@ class cerveza extends bebida{
 //Funciones
 
 
-function agregarAlCarritoUnGranMedalla(){
 
-    carrito.push();
-    
-}
 
 function agregarAlCarrito(bebida) {
       
@@ -112,20 +111,25 @@ function agregarAlCarrito(bebida) {
 
     localStorage.setItem(bebida.id,bebidaStorage);
     
-
+ 
 
     indexCarrito++;
-    Swal.fire({
-      title: 'Felicitaciones',
-      text: 'Agregaste un producto',
-      icon: 'success',
-      confirmButtonText: 'Seguir'
-
-    })
+   
+    let qsy = 0;
     
+
+
+    swal("Agregaste un nuevo producto a tu carrito"
+
+    
+    )
+      .then((qsy) => {
+    swal(`El total de tu carrito es ${listUsers()}`);
+    });
+       
   }
 
-function agregarCard(bebida) {
+  function agregarCard(bebida) {
     let nombre = bebida.nombre;
     String(nombre);
     let nuevaCard = document.createElement("nuevaBebida");
@@ -140,7 +144,11 @@ function agregarCard(bebida) {
       <div class="card-body">
         <h5 class="card-title" id=${bebida.nombre}>${bebida.nombre}</h5>
         <p class="card-text">${bebida.descripcion}</p>
+        <h5 class="card-title">Precio: ${bebida.precio}$</h5>
+        <input type="number" 
+       min="10" max="100">
       </div>
+      
       <div class="card-footer">
         <small class="text-muted">Ultima compra hace 30 minutos</small>
       </div>
@@ -149,15 +157,37 @@ function agregarCard(bebida) {
           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Agregar Producto</button>
     
         </div>
+        
     </div>`
     
     document.querySelector('#cartas').appendChild(nuevaCard); 
     let botonBebida = document.getElementById(`boton${bebida.nombre}`);
     botonBebida.onclick = () =>{agregarAlCarrito(bebida)}
 
+    botonBebida.addEventListener('click',()=> {
+      const newPost = {
+        title: bebida.nombre,
+        id: bebida.id,
+        precio: bebida.precio
+
+        
+
+      }
+
+     
+    })
+      
 
 
     }
+
+    
+
+
+
+
+
+
 
 
   const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
@@ -190,7 +220,7 @@ let bebidasSinAlcohol = [];
 
 
 vinos.push(rutini,luigiBosca);
-vinos.push(vinaDeBalbo);
+vinos.push(vinaDeBalbo)
 cervezas.push(patagoniaRoja);
 
 
@@ -217,44 +247,45 @@ agregarCard(rutini);
 agregarCard(rutiniPinot);
 agregarCard(luigiBosca);
 
-for (let i = 0; i < vinos.length; i++) {
-  agregarAlJason(vinos[i]);
+
+
+
+const cargarVinos = async () => {
+
+  const response = await fetch("archivo.json");
+  const usuarios = await response.json();
+
   
+
+
+  for (let i = 0; i < productosCargados; i++) {
+    
+    agregarCard(usuarios[i])
+  }
+
+  
+
+
+  
+  
+ 
+  
+  
+  
+
+
+  
+
+  
+     
+  
+ 
+
 }
 
-
-
-function agregarAlJason(bebida) {
-  fetch('https://jsonplaceholder.typicode.com/posts',
- {
-        method: 'POST',
-        body: JSON.stringify({
-            title: `${bebida.devolverNombre()}`,
-            body: bebida,
-            userId: bebida.id,
-
-           
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    }).then((response) => response.json())
-    .then((data) => console.log(data))
-  
-}
-
-fetch('https://jsonplaceholder.typicode.com/posts')
-    .then( (resp) => resp.json() )
-    .then( (data) => {
-        if (data === vinos[0].id) {
-          console.log
-        }
-    })
-
-
-
-
-
+window.addEventListener("load",function(){
+  cargarVinos()
+})
 
 
 
@@ -263,18 +294,6 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
 
     
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -364,3 +383,7 @@ function animate() {
 animate();
 
 
+const obj = rutiniPinot;
+const j = JSON.stringify(obj);
+
+console.log(j)

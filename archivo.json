@@ -1,0 +1,41 @@
+[
+    {
+       "id":5,
+       "nombre":"Luigi Bosca Reserva Malbec",
+       "litros":0.75,
+       "precio":1000,
+       "stock":300,
+       "cantidad":1,
+       "descripcion":"Es un tinto de color rojo violáceo brillante. Sus aromas son intensos y amables, con notas que recuerdan a frutas rojas, y tonos algo florales y especiados. En boca es generoso, fluido y expresivo, con taninos incipientes. De paladar franco y paso refrescante, con buen cuerpo y carácter.",
+       "tipo":"Rutini Malbec",
+       "importado":false,
+       "anio":2020,
+       "bodega":"Luigi Bosca"
+    },
+    {
+       "id":1,
+       "nombre":"Rutini Malbec Reserva",
+       "litros":1.25,
+       "precio":500,
+       "stock":0,
+       "cantidad":1,
+       "descripcion":"Rojo rubí profundo. El dúo de cepas de origen francés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno, y la Malbec matiza el corte con taninos suaves y dulces, realzando una combinación única de aromas y sabores frutados.",
+       "tipo":"Rutini Malbec",
+       "importado":false,
+       "anio":2020,
+       "bodega":"Rutini"
+    },
+    {
+       "id":4,
+       "nombre":"Pinot Noir Rutini",
+       "litros":0.95,
+       "precio":500,
+       "stock":200,
+       "cantidad":1,
+       "descripcion":"Púrpura de media intensidad, con matices rojos. Aromas sutiles a frutas rojas frescas (cereza, frutilla, arándanos) unidos a otros más complejos que evocan el bosque, ahumados, cuero y tabaco. En el paladar, deja una sensación aterciopelada, en la que perdura el recuerdo de frutas secas (avellana).",
+       "tipo":"Pinot Noir",
+       "importado":false,
+       "anio":2020,
+       "bodega":"Rutini"
+    }
+ ]

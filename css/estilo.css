@@ -13,6 +13,9 @@
         
 }
 
+
+
+
 .imagen{
         
         
@@ -192,6 +195,62 @@
 
     user-select: none;
 }
+
+
+:root{
+    --main-bg:#e91e6;
+  }
+  
+  .main-bg {
+    background: var(--main-bg) !important;
+  }
+  
+  input:focus, button:focus {
+    border: 1px solid var(--main-bg) !important;
+    box-shadow: none !important;
+  }
+  
+  .form-check-input:checked {
+    background-color: var(--main-bg) !important;
+    border-color: var(--main-bg) !important;
+  }
+  
+  .card, .btn, input{
+    border-radius:0 !important;
+  }
+  
+.contenedorlogin{
+    position: relative;
+    width:100%;
+    height:10em;
+    width: 100vw;
+    height: 50vw;
+    
+}
+
+
+#loginn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+  
+}
+
+
+.login1{
+    background-color: aliceblue;
+    padding: 1vw;
+    
+}
+
+.d-grid{
+    background-color: black;
+}
+
+
+
 
 
 
